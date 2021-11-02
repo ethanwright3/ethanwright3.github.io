@@ -1,8 +1,9 @@
+
 <html>
     <head>
         <meta name="viewport" content="with=divice-width, initial-scale=1.0">
         <title>ICU Need Beds</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     </head>
     <body>
         <header>
@@ -10,9 +11,9 @@
             <div class="nav-links">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="index.html">HOME</a href></li>
-                        <li><a href="Main Dashboard.html">Main Dashboard</a href></li>
-                        <li><a href="predictionDashboard.html">Prediction Dashboard</a href></li>
+                    <li><a href="{{url_for('index')}}">HOME</a href></li>
+                    <li><a href="{{url_for('mainDashboard')}}">Main Dashboard</a href></li>
+                    <li><a href="{{url_for('predictionDashboard')}}">Prediction Dashboard</a href></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -23,7 +24,7 @@
                     paper, present state map of ICU beds, and our projected
                     ICU map in the coming weeks. 
                 </p>
-                <a href="Main Dashboard.html" class="hero-btn">Main Implementation</a>
+                <a href="{{url_for('mainDashboard')}}" class="hero-btn">Main Implementation</a>
             </div>
         </header>
 
