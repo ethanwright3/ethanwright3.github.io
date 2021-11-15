@@ -1,0 +1,43 @@
+---
+title: "TBATS training"
+output: html_notebook
+---
+
+```{r}
+#loading packages
+library(forecast)
+library(fpp2)
+```
+
+
+```{r}
+#loading data
+data <- read.csv("CombinedChileData.csv")
+data <- data[,c(1,2,3,4)]
+# keep first 4 columns
+```
+
+```{r}
+#create train and test
+smp_size <- floor(0.8 * nrow(data))
+
+## set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(data)), size = smp_size)
+
+train <- data[train_ind, ]
+test <- data[-train_ind, ]
+```
+
+
+
+```{r}
+data_series<-ts(train) 
+
+fc.tbats <- forecast(tbats(data_series[,1], seasonal.periods=c(7.02, 192)), h=60)
+plot(fc.tbats)
+accuracy(fc.tbats)
+```
+
+
+
