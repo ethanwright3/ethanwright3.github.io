@@ -1,0 +1,53 @@
+---
+title: "GMDH"
+author: "Andrew Hampel"
+date: "11/16/2021"
+output: html_document
+---
+
+
+
+```{r}
+#loading packages
+library(GMDH)
+library(tidyr)
+```
+
+
+```{r}
+#loading data
+data <- read.csv("CombinedChileData.csv")
+data <- data[,c(1,2,3,4)]
+drop_na(data)
+
+# keep first 4 columns
+```
+
+
+
+
+```{r}
+# Transforming data to time series
+dataTS = ts(data[2])
+```
+
+
+
+
+```{r}
+#create model
+# Only works for 5 days ahead for some reason.
+model = fcast(dataTS, method = "GMDH", layer = 15, f.number = 5)
+```
+
+```{r}
+model
+```
+
+
+
+
+
+
+
+
